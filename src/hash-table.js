@@ -5,6 +5,7 @@ class HashTable {
   constructor() {
     this.limit = 8;
     this.storage = new LimitedArray(this.limit);
+    // getIndexBelowMax(str, this.limit) -> index
     // Do not modify anything inside of the constructor
   }
 }
