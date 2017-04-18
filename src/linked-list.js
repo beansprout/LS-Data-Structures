@@ -19,7 +19,7 @@ class LinkedList {
   // that one pair is both head and tail
   // list = 1 item object {value}, item = {hd}, item = {tl}
       this.head = node;
-      this.tail = node;
+      this.tail = this.head;
   // then stop
       return;
     }
@@ -32,7 +32,7 @@ class LinkedList {
   // i.e. list = {val:val, next: {val:val, next: null}}
       this.head.next = node;
     // and that new node is also the tail
-      this.tail = node;
+      this.tail = this.head.next;
       return;
     }
   // CASE 3: MORE THAN 2 ITEMS IN LIST IS THE LAST POSSIBILITY
@@ -44,23 +44,21 @@ class LinkedList {
     // 1. current=  {val:val, next:}}
     // 2. current.next =  {val:1, next: =>>{val:val, next:{}}
     // 3. current.next.next = null so stop there and add a node at tail.next
-    while (current.next !== this.tail) {
+    while (current.next) {
       current = current.next;
     }
     this.tail = current;
     current.next = node;
-    this.tail = node;
+    this.tail = current.next;
     return;
   }
 
   removeHead() {
-    const result = {};
-    Object.assign(result, this.head);
-    result.next = null;
+    const result = this.head.value;
     if (this.head.next) {
-      this.LinkedList = this.head.next;
+      this.head = this.head.next;
       // let current = this.head.next; // current = 2
-      // this.head = null; // hd removed
+       // hd removed
       // this.current = this.head; // 2 = new head
       // while (current.next) { // while there is a next
       //   current = current.next; // current is now hd.next
@@ -73,10 +71,6 @@ class LinkedList {
     }
     return result;
   }
-
-    // {v:1, n:{ v:2, n: {v:3, n: null}}} hd = 1 hd.n = 2 hd.n.n = 3 tl = 3
-    // {2, {3}} hd = 2:hd.n, hd.n = 3:null, tl = 3
-   // old head just garbage collects out?
 
   contains(d) {
     let current = this.head;

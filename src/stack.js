@@ -1,16 +1,16 @@
 class Stack {
   constructor() {
-    this.pile = [];
+    this.storage = [];
   }
 
   add(val) {
-    return this.pile.push(val);
+    return this.storage.push(val);
   }
   remove() {
-    return this.pile.pop();
+    return this.storage.pop();
   }
   get size() {
-    return this.pile.length;
+    return this.storage.length;
   }
 }
 
